@@ -50,11 +50,13 @@ app.post('/submitButton', (req, res) => {
 
 })
 
-httpsServer.listen(process.env.PORT || 443, () => {
+/* httpsServer.listen(process.env.PORT || 443, () => {
     if (process.env.PORT == undefined) {
         console.log("Server now listening on PORT:443")
     } else {
         console.log(`Server now listening on PORT:${process.env.PORT}`)
     }
     
-})
+}) */
+
+app.listen(80)
