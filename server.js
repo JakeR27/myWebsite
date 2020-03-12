@@ -15,7 +15,7 @@ app.set('trust proxy', 'loopback')
 
 app.use('/media', express.static(__dirname + '/media'));
 app.use(express.urlencoded({extended: false}))
-//app.use('/static', express.static(__dirname + '/static', { dotfiles: 'allow' } ))
+app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
 
 app.get('/', (req, res) => {
     res.render('index', {borderOn: bordersActive})
