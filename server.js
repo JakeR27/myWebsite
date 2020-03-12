@@ -12,7 +12,7 @@ app.set('trust proxy', 'loopback')
 
 app.use('/media', express.static(__dirname + '/media'));
 app.use(express.urlencoded({extended: false}))
-app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
+//app.use('/static', express.static(__dirname + '/static', { dotfiles: 'allow' } ))
 
 app.get('/', (req, res) => {
     res.render('index', {borderOn: bordersActive})
@@ -44,7 +44,7 @@ app.post('/submitButton', (req, res) => {
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert')
-}, app).listen(process.env.PORT || 5000, () => {
+}, app).listen(process.env.PORT || 80, () => {
     console.log(`Server now listening on ${process.env.PORT}`)
 })
 
