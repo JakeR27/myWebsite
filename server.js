@@ -1,5 +1,6 @@
 const express = require('express')
 const https = require('https')
+const http = require('http')
 const fs = require('fs')
 const app = express()
 
@@ -15,7 +16,11 @@ if (process.platform == "win32") {
 }
 
 const httpsServer = https.createServer(creds, app)
-const port = 443
+const httpServer = http.createServer((req, res) => {
+    res.writeHead(301, {"Location":"https://" + req.headers['host'] + req.url })
+    console.log("HTTP: redirect to https")
+})
+const httpsPort = 443
 
 let bordersActive = 0
 
@@ -61,13 +66,19 @@ app.post('/submitButton', (req, res) => {
 
 })
 
-httpsServer.listen(process.env.PORT || 443, () => {
+httpsServer.listen(process.env.PORT || httpsPort, () => {
     if (process.env.PORT == undefined) {
-        console.log("Server now listening on PORT:443")
+        console.log("HTTPS: server listening on PORT:443")
     } else {
-        console.log(`Server now listening on PORT:${process.env.PORT}`)
+        console.log(`HTTPS: server listening on PORT:${process.env.PORT}`)
     }
     
 })
+
+httpServer.listen(80, () => {
+    console.log("HTTP: server listening on PORT:80")
+})
+
+
 
 /* app.listen(80) */
