@@ -2,7 +2,18 @@ const express = require('express')
 const https = require('https')
 const fs = require('fs')
 const app = express()
-const creds = {key: fs.readFileSync('server.key'), cert:fs.readFileSync('server.cert')}
+
+
+let creds = {};
+if (process.platform == "win32") {
+   creds = {key: fs.readFileSync('server.key'), cert:fs.readFileSync('server.cert')}
+} else {
+    creds = {key: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/key.pem'),
+            cert: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/cert.pem'),
+            ca: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/fullchain.pem')
+            }    
+}
+
 const httpsServer = https.createServer(creds, app)
 const port = 443
 
@@ -50,13 +61,13 @@ app.post('/submitButton', (req, res) => {
 
 })
 
-/* httpsServer.listen(process.env.PORT || 443, () => {
+httpsServer.listen(process.env.PORT || 443, () => {
     if (process.env.PORT == undefined) {
         console.log("Server now listening on PORT:443")
     } else {
         console.log(`Server now listening on PORT:${process.env.PORT}`)
     }
     
-}) */
+})
 
-app.listen(80)
+/* app.listen(80) */
