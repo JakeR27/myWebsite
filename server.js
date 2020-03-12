@@ -2,7 +2,8 @@ const express = require('express')
 const https = require('https')
 const http = require('http')
 const fs = require('fs')
-const app = express()
+const httpsApp = express()
+const httpApp = express()
 
 
 let creds = {};
@@ -15,34 +16,37 @@ if (process.platform == "win32") {
             }    
 }
 
-const httpsServer = https.createServer(creds, app)
-const httpServer = http.createServer((req, res) => {
-    res.writeHead(301, {"Location":"https://" + req.headers['host'] + req.url })
-    console.log("HTTP: redirect to https")
-})
+const httpsServer = https.createServer(creds, httpsApp)
+const httpServer = http.createServer(httpApp)
+
 const httpsPort = 443
 
 let bordersActive = 0
 
 console.log("Server running")
 
-app.set('view engine', 'ejs')
-app.set('trust proxy', 'loopback')
+httpApp.get('*', (req, res) => {
+    res.redirect("https://" + req.headers.host + req.url);
+    console.log("HTTP: redirect to https")
+})
 
-app.use('/media', express.static(__dirname + '/media'));
-app.use(express.urlencoded({extended: false}))
-app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
+httpsApp.set('view engine', 'ejs')
+httpsApp.set('trust proxy', 'loopback')
 
-app.get('/', (req, res) => {
+httpsApp.use('/media', express.static(__dirname + '/media'));
+httpsApp.use(express.urlencoded({extended: false}))
+httpsApp.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
+
+httpsApp.get('/', (req, res) => {
     res.render('index', {borderOn: bordersActive})
     console.log(`served request from ${req.ip}`)
 })
 
-app.get('/dev', (req, res) => {
+httpsApp.get('/dev', (req, res) => {
     res.render('index', {borderOn: 1})
 })
 
-app.post('/submitButton', (req, res) => {
+httpsApp.post('/submitButton', (req, res) => {
 
     if (req.body.text == "d") {
         bordersActive = 1
