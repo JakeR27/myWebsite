@@ -2,6 +2,9 @@ const express = require('express')
 const https = require('https')
 const fs = require('fs')
 const app = express()
+const creds = {key: fs.readFileSync('server.key'), cert:fs.readFileSync('server.cert')}
+const httpsServer = https.createServer(creds, app)
+const port = 443
 
 let bordersActive = 0
 
@@ -31,21 +34,27 @@ app.post('/submitButton', (req, res) => {
         bordersActive = 0
     }
 
+    if (req.body.text == "imogen") {
+        res.redirect('/#Sf')
+    } else {
+        res.redirect('/')
+    }
+
     /* if (bordersActive == 1) {
         bordersActive = 0
     } else {
         bordersActive = 1
     } */
-    res.redirect('/')
+    
     //res.render('index', {borderOn: bordersActive})
 
 })
 
-https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-}, app).listen(process.env.PORT || 80, () => {
-    console.log(`Server now listening on ${process.env.PORT}`)
+httpsServer.listen(process.env.PORT || 443, () => {
+    if (process.env.PORT == undefined) {
+        console.log("Server now listening on PORT:443")
+    } else {
+        console.log(`Server now listening on PORT:${process.env.PORT}`)
+    }
+    
 })
-
-//app.listen(process.env.PORT || 5000)
