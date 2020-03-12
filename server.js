@@ -8,7 +8,7 @@ let creds = {};
 if (process.platform == "win32") {
    creds = {key: fs.readFileSync('server.key'), cert:fs.readFileSync('server.cert')}
 } else {
-    creds = {key: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/key.pem'),
+    creds = {key: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/privkey.pem'),
             cert: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/cert.pem'),
             ca: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/fullchain.pem')
             }    
