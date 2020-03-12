@@ -6,12 +6,14 @@ let bordersActive = 0
 console.log("Server running")
 
 app.set('view engine', 'ejs')
+app.set('trust proxy', 'loopback')
 
 app.use('/media', express.static(__dirname + '/media'));
 app.use(express.urlencoded({extended: false}))
 
 app.get('/', (req, res) => {
     res.render('index', {borderOn: bordersActive})
+    console.log(`served request from ${req.ip}`)
 })
 
 app.get('/dev', (req, res) => {
