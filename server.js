@@ -24,7 +24,8 @@ const httpsServer = https.createServer(creds, httpsApp)
 const httpServer = http.createServer(httpApp)
 
 //Set variables to use later
-const httpsPort = 443
+const httpsPort = 8443
+const httpPort = 8080
 const githubUser = "JakeR27"
 let bordersActive = 0
 
