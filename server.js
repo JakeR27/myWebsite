@@ -4,7 +4,7 @@ const https = require('https')
 const http = require('http')
 const fs = require('fs')
 const childProcess = require('child_process')
-const cookieParser = require('cookieParser')
+const cookieParser = require('cookie-parser')
 const httpsApp = express()
 const httpApp = express()
 
@@ -34,8 +34,14 @@ console.log("WEB: server starting")
 
 //Redirect all http requests to https server
 httpApp.get('*', (req, res) => {
-    res.redirect("https://" + req.subdomains[0] + req.headers.host + request.url);
-    console.log("WEB HTTP: redirect to https server")
+    if (req.subdomains[0] == undefined) {
+        res.redirect("https://" + req.headers.host + req.url);
+        console.log("WEB HTTP: redirect to https server")
+    } else {
+        res.redirect("https://" + req.subdomains[0] + req.headers.host + req.url);
+        console.log("WEB HTTP: redirect to https server")
+    }
+    
 })
 
 //Set https server settings
@@ -53,7 +59,7 @@ httpsApp.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
 httpsApp.get('/', (req, res) => {
 
     //If devMode cookie present show dev render
-    if (req.cookies['devMode']) {
+    if (req.cookies['devMode'] == 'true') {
         res.render('index', {borderOn: 1})
     } else { //Otherwise show normal render and reset cookie
         res.render('index', {borderOn: 0})
@@ -110,7 +116,7 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
 // starts httpS server at port 443
 httpsServer.listen(process.env.PORT || httpsPort, () => {
     if (process.env.PORT == undefined) {
-        console.log("WEB HTTPS: server listening on PORT:443")
+        console.log(`WEB HTTPS: server listening on PORT:${httpsPort}`)
     } else {
         console.log(`WEB HTTPS: server listening on PORT:${process.env.PORT}`)
     }
