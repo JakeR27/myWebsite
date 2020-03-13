@@ -62,8 +62,9 @@ httpsApp.get('/', (req, res) => {
     if (req.cookies['devMode'] == 'true') {
         res.render('index', {borderOn: 1})
     } else { //Otherwise show normal render and reset cookie
-        res.render('index', {borderOn: 0})
         res.cookie('devMode','false')
+        res.render('index', {borderOn: 0})
+        
     }
     
     //Log the IP of the request
