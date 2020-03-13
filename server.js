@@ -54,7 +54,7 @@ httpsApp.post('/submitButton', (req, res) => {
         bordersActive = 0
     }
 
-    if (req.body.text == "imogen") {
+    if (req.body.text == "test") {
         res.redirect('/#Sf')
     } else {
         res.redirect('/')
