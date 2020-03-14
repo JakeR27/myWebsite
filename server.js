@@ -7,7 +7,6 @@ const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const httpsApp = express()
 const httpApp = express()
-const dateObject = new Date()
 
 //set SSL files based on which OS is hosting the server
 let creds = {};
@@ -155,6 +154,8 @@ function redeploy(res) {
 }
 
 function cTime() {
+    let dateObject = new Date()
+
     let h = dateObject.getHours()
     let m = dateObject.getMinutes()
     let s = dateObject.getSeconds()
