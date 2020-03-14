@@ -69,7 +69,7 @@ httpsApp.get('/', (req, res) => {
     }
     
     //Log the IP of the request
-    console.log(`served request from ${req.ip}`)
+    console.log(`HTTPS: served request from ${req.ip}`)
 })
 
 // /dev path sets the devMode cookie
@@ -117,9 +117,9 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
     }
 })
 
-// starts httpS server at port 443
+// starts httpS server at port 8443 by default 
 httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
-    if (process.env.PORT == undefined) {
+    if (process.env.httpsPORT == undefined) {
         console.log(`WEB HTTPS: server listening on PORT:${httpsPort}`)
     } else {
         console.log(`WEB HTTPS: server listening on PORT:${process.env.httpsPORT}`)
@@ -127,9 +127,9 @@ httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
     
 })
 
-// starts http server at port 80 
+// starts http server at port 8080 by default
 httpServer.listen(process.env.httpPORT || httpPort, () => {
-    if (process.env.PORT == undefined) {
+    if (process.env.httpPORT == undefined) {
         console.log(`WEB HTTP: server listening on PORT:${httpPort}`)
     } else {
         console.log(`WEB HTTP: server listening on PORT:${process.env.httpPORT}`)
