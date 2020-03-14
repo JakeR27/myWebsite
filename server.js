@@ -7,7 +7,7 @@ const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const colours = require('colors')
 const gitHandler = require('github-webhook-handler')
-let github = gitHandler({secret: "secret"})
+let github = gitHandler({secret: "secret", path: '/webhooks/github/push'})
 const httpsApp = express()
 const httpApp = express()
 
