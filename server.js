@@ -109,6 +109,9 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
     console.log('WEB HTTPS: github push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
+    console.log(req)
+    console.log("")
+    console.log(req.body)
 
     //if push was to master and the user was me then
     if (branch.indexOf('master') > -1 && sender.login === githubUser) {
