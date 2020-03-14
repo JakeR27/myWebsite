@@ -145,7 +145,6 @@ httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
     
 })
 
-//test
 // starts http server at port 8080 by default
 httpServer.listen(process.env.httpPORT || httpPort, () => {
     if (process.env.httpPORT == undefined) {
