@@ -161,7 +161,7 @@ function redeploy(res) {
     console.log(cTime() + webS + ': attemping to fetch updated files from github')
     //this runs a commandline and starts the "deployserver" script
     //childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
-    childProcess.exec('cd /home/j_bailey_saltmarsh_google/Web2/myWebsite && git pull', (err, stdout, stderr) => {
+    childProcess.exec('cd /home/j_bailey_saltmarsh_google/Web2/myWebsite && git pull https://JakeR27:githubPassw0rd312@github.com/JakeR27/myWebsite', (err, stdout, stderr) => {
         //if there was an error show it here
         if (err) {
             console.error(cTime() + webS + err)
