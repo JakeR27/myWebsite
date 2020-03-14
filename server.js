@@ -160,6 +160,6 @@ function cTime() {
     let m = dateObject.getMinutes()
     let s = dateObject.getSeconds()
 
-    return (h + ":" + m + ":" + s)
+    return (h + ":" + m + ":" + s + " ")
 }
 /* app.listen(80) */
