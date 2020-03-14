@@ -155,7 +155,7 @@ httpServer.listen(process.env.httpPORT || httpPort, () => {
 
 // function to reploy this server
 function redeploy(res) {
-    console.log(cTime() + webS + ': attemping to run redeploy commands')
+    console.log(cTime() + webS + ': attemping to fetch updated files from github')
     //this runs a commandline and starts the "deployserver" script
     //childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
     childProcess.exec('cd ~/Web2/myWebsite && git pull', (err, stdout, stderr) => {
