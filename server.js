@@ -110,7 +110,7 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
     let sender = req.body.sender
     let branch = req.body.ref
     console.log(req)
-    console.log("")
+    console.log("--------------------------------------------------------------------------------------------------------------")
     console.log(req.body)
 
     //if push was to master and the user was me then
