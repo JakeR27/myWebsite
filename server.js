@@ -6,8 +6,9 @@ const fs = require('fs')
 const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const colours = require('colors')
-const gitHandler = require('github-webhook-handler')
-let github = gitHandler({secret: "secret", path: '/webhooks/github/push'})
+const gitHandler = require('github-webhook-middleware')({
+    secret: "secret"
+})
 const httpsApp = express()
 const httpApp = express()
 
@@ -114,7 +115,7 @@ httpsApp.post('/submitButton', (req, res) => {
 })
 
 // post handler for a github push update
-httpsApp.post('/webhooks/github/push', github, (req, res) => {
+httpsApp.post('/webhooks/github/push', gitHandler, (req, res) => {
     console.log(cTime() + webS + httpsS + githubS + ': push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
