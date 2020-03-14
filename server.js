@@ -12,8 +12,6 @@ const gitHandler = require('github-webhook-middleware')({
 const httpsApp = express()
 const httpApp = express()
 
-//test
-
 //for console.log commands
 const webS = "WEB ".cyan
 const httpS = "HTTP ".red
