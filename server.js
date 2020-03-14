@@ -166,7 +166,6 @@ function redeploy(res) {
             console.error(cTime() + webS + err)
             return res.send(500)
         }
-        res.send(200)
     })
 }
 
