@@ -6,6 +6,8 @@ const fs = require('fs')
 const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const colours = require('colors')
+const gitHandler = require('github-webhook-handler')
+let github = gitHandler({secret: "secret"})
 const httpsApp = express()
 const httpApp = express()
 
@@ -112,7 +114,7 @@ httpsApp.post('/submitButton', (req, res) => {
 })
 
 // post handler for a github push update
-httpsApp.post('/webhooks/github/push', (req, res) => {
+httpsApp.post('/webhooks/github/push', github, (req, res) => {
     console.log(cTime() + webS + httpsS + githubS + ': push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
@@ -122,8 +124,13 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
 
     //if push was to master and the user was me then
     if (branch.indexOf('master') > -1 && sender.login === githubUser) {
-        console.log(cTime() + webS + httpsS + githubS + ': branch and user ok, attemping to redeploy')
-        redeploy(res)
+        console.log(cTime() + webS + httpsS + githubS + ': branch and user ok')
+
+        //if correct github event
+        if (req.headers['x-github-event'] = 'push') {
+            redeploy(res)
+        }
+        res.status(200).end()
     }
 })
 
@@ -150,7 +157,8 @@ httpServer.listen(process.env.httpPORT || httpPort, () => {
 function redeploy(res) {
     console.log(cTime() + webS + ': attemping to run redeploy commands')
     //this runs a commandline and starts the "deployserver" script
-    childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
+    //childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
+    childProcess.exec('cd ~/Web2/myWebsite && git pull', (err, stdout, stderr) => {
         //if there was an error show it here
         if (err) {
             console.error(cTime() + webS + err)
