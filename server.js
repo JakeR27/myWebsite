@@ -70,7 +70,7 @@ httpsApp.get('/', (req, res) => {
     }
     
     //Log the IP of the request
-    console.log(`HTTPS: served request from ${req.ip}`)
+    console.log(cTime() + `HTTPS: served request from ${req.ip}`)
 })
 
 // /dev path sets the devMode cookie
