@@ -10,7 +10,7 @@ const httpsApp = express()
 const httpApp = express()
 
 //for console.log commands
-const webS = "WEB ".magenta
+const webS = "WEB ".cyan
 const httpS = "HTTP ".red
 const httpsS = "HTTPS ".green
 const githubS = "GITHUB ".blue
