@@ -10,13 +10,14 @@ const httpApp = express()
 
 //set SSL files based on which OS is hosting the server
 let creds = {};
-if (process.platform == "win32") {
-   creds = {key: fs.readFileSync('server.key'), cert:fs.readFileSync('server.cert')}
-} else {
+try {
     creds = {key: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/privkey.pem'),
             cert: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/cert.pem'),
             ca: fs.readFileSync('/etc/letsencrypt/live/jakebs.xyz/fullchain.pem')
-            }    
+        }
+} catch(err) {
+    creds = {key: fs.readFileSync('server.key'), 
+            cert:fs.readFileSync('server.cert')}
 }
 
 //Create the server
@@ -105,11 +106,13 @@ httpsApp.post('/submitButton', (req, res) => {
 
 // post handler for a github push update
 httpsApp.post('/webhooks/github/push', (req, res) => {
+    console.log('WEB HTTPS: github push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
 
     //if push was to master and the user was me then
     if (branch.indexOf('master') > -1 && sender.login === githubUser) {
+        console.log('WEB HTTPS: github branch and user ok, attemping to redeploy')
         redeploy(res)
     }
 })
@@ -131,6 +134,7 @@ httpServer.listen(80, () => {
 
 // function to reploy this server
 function redeploy(res) {
+    console.log('attemping to run redeploy commands')
     //this runs a commandline and starts the "deployserver" script
     childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
         //if there was an error show it here
