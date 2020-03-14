@@ -9,6 +9,12 @@ const colours = require('colors')
 const httpsApp = express()
 const httpApp = express()
 
+//for console.log commands
+const webS = "WEB ".magenta
+const httpS = "HTTP ".red
+const httpsS = "HTTPS ".green
+const githubS = "GITHUB ".blue
+
 //set SSL files based on which OS is hosting the server
 let creds = {};
 try {
@@ -32,16 +38,16 @@ const githubUser = "JakeR27"
 let bordersActive = 0
 
 //Notify server is startinh
-console.log(cTime() + "WEB: server starting")
+console.log(cTime() + webS + ": server starting")
 
 //Redirect all http requests to https server
 httpApp.get('*', (req, res) => {
     if (req.subdomains[0] == undefined) {
         res.redirect("https://" + req.headers.host + req.url);
-        console.log(cTime() + "WEB HTTP: redirect to https server")
+        console.log(cTime() + webS + httpsS + ": redirect to https server")
     } else {
         res.redirect("https://" + req.subdomains[0] + req.headers.host + req.url);
-        console.log(cTime() + "WEB HTTP: redirect to https server")
+        console.log(cTime() + webS + httpS + ": redirect to https server")
     }
     
 })
@@ -70,7 +76,7 @@ httpsApp.get('/', (req, res) => {
     }
     
     //Log the IP of the request
-    console.log(cTime() + `WEB HTTPS: served request from ${req.ip}`)
+    console.log(cTime() + webS + httpsS + `: served request from ${req.ip}`)
 })
 
 // /dev path sets the devMode cookie
@@ -107,16 +113,16 @@ httpsApp.post('/submitButton', (req, res) => {
 
 // post handler for a github push update
 httpsApp.post('/webhooks/github/push', (req, res) => {
-    console.log(cTime() + 'WEB HTTPS: github push recieved')
+    console.log(cTime() + webS + httpsS + githubS + ': push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
-    console.log(cTime() + req)
-    console.log(cTime() + "--------------------------------------------------------------------------------------------------------------")
-    console.log(cTime() + req.body)
+    console.log(cTime() + webS + httpsS + req)
+    console.log(cTime() + webS + httpsS + "--------------------------------------------------------------------------------------------------------------")
+    console.log(cTime() + webS + httpsS + req.body)
 
     //if push was to master and the user was me then
     if (branch.indexOf('master') > -1 && sender.login === githubUser) {
-        console.log(cTime() + 'WEB HTTPS: github branch and user ok, attemping to redeploy')
+        console.log(cTime() + webS + httpsS + githubS + ': branch and user ok, attemping to redeploy')
         redeploy(res)
     }
 })
@@ -124,9 +130,9 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
 // starts httpS server at port 8443 by default 
 httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
     if (process.env.httpsPORT == undefined) {
-        console.log(cTime() + `WEB HTTPS: server listening on PORT:${httpsPort}`)
+        console.log(cTime() + webS + httpsS + `: server listening on PORT:${httpsPort}`)
     } else {
-        console.log(cTime() + `WEB HTTPS: server listening on PORT:${process.env.httpsPORT}`)
+        console.log(cTime() + webS + httpsS + `: server listening on PORT:${process.env.httpsPORT}`)
     }
     
 })
@@ -134,20 +140,20 @@ httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
 // starts http server at port 8080 by default
 httpServer.listen(process.env.httpPORT || httpPort, () => {
     if (process.env.httpPORT == undefined) {
-        console.log(cTime() + `WEB HTTP: server listening on PORT:${httpPort}`)
+        console.log(cTime() + webS + httpS + `: server listening on PORT:${httpPort}`)
     } else {
-        console.log(cTime() + `WEB HTTP: server listening on PORT:${process.env.httpPORT}`)
+        console.log(cTime() + webS + httpS + `: server listening on PORT:${process.env.httpPORT}`)
     }
 })
 
 // function to reploy this server
 function redeploy(res) {
-    console.log(cTime() + 'WEB: attemping to run redeploy commands')
+    console.log(cTime() + webS + ': attemping to run redeploy commands')
     //this runs a commandline and starts the "deployserver" script
     childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
         //if there was an error show it here
         if (err) {
-            console.error(cTime() + err)
+            console.error(cTime() + webS + err)
             return res.send(500)
         }
         res.send(200)
