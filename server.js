@@ -166,6 +166,7 @@ function redeploy(res) {
             return res.send(500)
         }
     })
+    console.log(cTime() + webS + ": sucessfully ran redeploy command")
 }
 
 function cTime() {
