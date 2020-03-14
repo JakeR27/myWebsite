@@ -118,18 +118,22 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
 })
 
 // starts httpS server at port 443
-httpsServer.listen(process.env.PORT || httpsPort, () => {
+httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
     if (process.env.PORT == undefined) {
         console.log(`WEB HTTPS: server listening on PORT:${httpsPort}`)
     } else {
-        console.log(`WEB HTTPS: server listening on PORT:${process.env.PORT}`)
+        console.log(`WEB HTTPS: server listening on PORT:${process.env.httpsPORT}`)
     }
     
 })
 
 // starts http server at port 80 
-httpServer.listen(80, () => {
-    console.log("WEB HTTP: server listening on PORT:80")
+httpServer.listen(process.env.httpPORT || httpPort, () => {
+    if (process.env.PORT == undefined) {
+        console.log(`WEB HTTP: server listening on PORT:${httpPort}`)
+    } else {
+        console.log(`WEB HTTP: server listening on PORT:${process.env.httpPORT}`)
+    }
 })
 
 // function to reploy this server
