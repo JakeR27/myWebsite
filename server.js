@@ -7,6 +7,7 @@ const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const httpsApp = express()
 const httpApp = express()
+const dateObject = new Date()
 
 //set SSL files based on which OS is hosting the server
 let creds = {};
@@ -31,16 +32,16 @@ const githubUser = "JakeR27"
 let bordersActive = 0
 
 //Notify server is startinh
-console.log("WEB: server starting")
+console.log(cTime() + "WEB: server starting")
 
 //Redirect all http requests to https server
 httpApp.get('*', (req, res) => {
     if (req.subdomains[0] == undefined) {
         res.redirect("https://" + req.headers.host + req.url);
-        console.log("WEB HTTP: redirect to https server")
+        console.log(cTime() + "WEB HTTP: redirect to https server")
     } else {
         res.redirect("https://" + req.subdomains[0] + req.headers.host + req.url);
-        console.log("WEB HTTP: redirect to https server")
+        console.log(cTime() + "WEB HTTP: redirect to https server")
     }
     
 })
@@ -106,16 +107,16 @@ httpsApp.post('/submitButton', (req, res) => {
 
 // post handler for a github push update
 httpsApp.post('/webhooks/github/push', (req, res) => {
-    console.log('WEB HTTPS: github push recieved')
+    console.log(cTime() + 'WEB HTTPS: github push recieved')
     let sender = req.body.sender
     let branch = req.body.ref
-    console.log(req)
-    console.log("--------------------------------------------------------------------------------------------------------------")
-    console.log(req.body)
+    console.log(cTime() + req)
+    console.log(cTime() + "--------------------------------------------------------------------------------------------------------------")
+    console.log(cTime() + req.body)
 
     //if push was to master and the user was me then
     if (branch.indexOf('master') > -1 && sender.login === githubUser) {
-        console.log('WEB HTTPS: github branch and user ok, attemping to redeploy')
+        console.log(cTime() + 'WEB HTTPS: github branch and user ok, attemping to redeploy')
         redeploy(res)
     }
 })
@@ -123,9 +124,9 @@ httpsApp.post('/webhooks/github/push', (req, res) => {
 // starts httpS server at port 8443 by default 
 httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
     if (process.env.httpsPORT == undefined) {
-        console.log(`WEB HTTPS: server listening on PORT:${httpsPort}`)
+        console.log(cTime() + `WEB HTTPS: server listening on PORT:${httpsPort}`)
     } else {
-        console.log(`WEB HTTPS: server listening on PORT:${process.env.httpsPORT}`)
+        console.log(cTime() + `WEB HTTPS: server listening on PORT:${process.env.httpsPORT}`)
     }
     
 })
@@ -133,24 +134,31 @@ httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
 // starts http server at port 8080 by default
 httpServer.listen(process.env.httpPORT || httpPort, () => {
     if (process.env.httpPORT == undefined) {
-        console.log(`WEB HTTP: server listening on PORT:${httpPort}`)
+        console.log(cTime() + `WEB HTTP: server listening on PORT:${httpPort}`)
     } else {
-        console.log(`WEB HTTP: server listening on PORT:${process.env.httpPORT}`)
+        console.log(cTime() + `WEB HTTP: server listening on PORT:${process.env.httpPORT}`)
     }
 })
 
 // function to reploy this server
 function redeploy(res) {
-    console.log('attemping to run redeploy commands')
+    console.log(cTime() + 'attemping to run redeploy commands')
     //this runs a commandline and starts the "deployserver" script
     childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
         //if there was an error show it here
         if (err) {
-            console.error(err)
+            console.error(cTime() + err)
             return res.send(500)
         }
         res.send(200)
     })
 }
 
+function cTime() {
+    let h = dateObject.getHours()
+    let m = dateObject.getMinutes()
+    let s = dateObject.getSeconds()
+
+    return (h + ":" + m + ":" + s)
+}
 /* app.listen(80) */
