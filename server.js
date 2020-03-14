@@ -5,6 +5,7 @@ const http = require('http')
 const fs = require('fs')
 const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
+const colours = require('colors')
 const httpsApp = express()
 const httpApp = express()
 
@@ -69,7 +70,7 @@ httpsApp.get('/', (req, res) => {
     }
     
     //Log the IP of the request
-    console.log(cTime() + `HTTPS: served request from ${req.ip}`)
+    console.log(cTime() + `WEB HTTPS: served request from ${req.ip}`)
 })
 
 // /dev path sets the devMode cookie
@@ -141,7 +142,7 @@ httpServer.listen(process.env.httpPORT || httpPort, () => {
 
 // function to reploy this server
 function redeploy(res) {
-    console.log(cTime() + 'attemping to run redeploy commands')
+    console.log(cTime() + 'WEB: attemping to run redeploy commands')
     //this runs a commandline and starts the "deployserver" script
     childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
         //if there was an error show it here
@@ -160,6 +161,6 @@ function cTime() {
     let m = dateObject.getMinutes()
     let s = dateObject.getSeconds()
 
-    return (h + ":" + m + ":" + s + " ")
+    return (h + ":" + m + ":" + s + " ").yellow
 }
 /* app.listen(80) */
