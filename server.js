@@ -82,6 +82,15 @@ httpsApp.get('/', (req, res) => {
     console.log(cTime() + webS + httpsS + `: served request from ${req.ip}`)
 })
 
+//Root path displays site
+httpsApp.get('/futureProjects', (req, res) => {
+
+    res.render('futureProjects')
+    
+    //Log the IP of the request
+    console.log(cTime() + webS + httpsS + `: served request from ${req.ip}`)
+})
+
 // /dev path sets the devMode cookie
 httpsApp.get('/dev', (req, res) => {
     res.cookie('devMode', 'true')
