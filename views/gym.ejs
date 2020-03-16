@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    
-<h1>Is luke going to the gym?</h1>
-<% if (lukeIsCool) { %>
-    <p>Luke is cool</p>
-<% } else { %>
-    <p>Luke is NOT cool</p>
-<% } %>
+    <div class="container">
+        <h1>Is luke going to the gym?</h1>
+        <% if (lukeIsCool) { %>
+            <p>Luke is cool because he is not going to the gym</p>
+        <% } else { %>
+            <p>Luke is NOT cool because he is going to the gym</p>
+        <% } %>
+    </div>
+
 
 </body>
 </html>
