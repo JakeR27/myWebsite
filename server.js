@@ -46,7 +46,7 @@ let logFile = fs.createWriteStream('/log.txt', {flags: 'w'})
 let logStdout = process.stdout
 console.log = () => {
     logFile.write(util.format.apply(null, arguments) + '\n');
-    logStdout.write(util.format.apply(null, arguments) + '\n');
+    //logStdout.write(util.format.apply(null, arguments) + '\n');
 }
 
 //Notify server is startinh
