@@ -44,8 +44,8 @@ let bordersActive = 0
 //create log file
 let logFile = fs.createWriteStream('/log.txt', {flags: 'w'})
 let logStdout = process.stdout
-console.log = () => {
-    logFile.write(util.format.apply(null, arguments) + '\n');
+console.log = (d) => {
+    logFile.write(util.format(d) + '\n');
     //logStdout.write(util.format.apply(null, arguments) + '\n');
 }
 
