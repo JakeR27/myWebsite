@@ -3,6 +3,7 @@ const express = require('express')
 const https = require('https')
 const http = require('http')
 const fs = require('fs')
+const util = require('util')
 const childProcess = require('child_process')
 const cookieParser = require('cookie-parser')
 const colours = require('colors')
@@ -39,6 +40,14 @@ const httpsPort = 8443
 const httpPort = 8080
 const githubUser = "JakeR27"
 let bordersActive = 0
+
+//create log file
+let logFile = fs.createWriteStream('/log.txt', {flags: 'w'})
+let logStdout = pro.stdout
+console.log = () => {
+    logFile.write(util.format.apply(null, arguments) + '\n');
+    logStdout.write(util.format.apply(null, arguments) + '\n');
+}
 
 //Notify server is startinh
 console.log(cTime() + webS + ": server starting")
