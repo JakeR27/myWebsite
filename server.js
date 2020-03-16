@@ -42,12 +42,12 @@ const githubUser = "JakeR27"
 let bordersActive = 0
 
 //create log file
-let logFile = fs.createWriteStream('/log.txt', {flags: 'w'})
+/* let logFile = fs.createWriteStream('/log.txt', {flags: 'w'})
 let logStdout = process.stdout
 console.log = (d) => {
     logFile.write(util.format(d) + '\n');
     //logStdout.write(util.format.apply(null, arguments) + '\n');
-}
+} */
 
 //Notify server is startinh
 console.log(cTime() + webS + ": server starting")
