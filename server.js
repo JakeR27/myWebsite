@@ -109,6 +109,20 @@ httpsApp.get('/dev', (req, res) => {
     res.cookie('devMode', 'true')
 })
 
+//funny gym meme with luke
+httpsApp.get('/gym', (req, res) => {
+
+    if (req.cookies["LukeIsCool"] == true) {
+        res.render('gym', {lukeIsCool: true});
+    } else {
+        res.render('gym', {lukeIsCool: false});
+    }
+    
+})
+
+//post handler for luke being cool
+
+
 // post handler for when search button is pressed
 httpsApp.post('/submitButton', (req, res) => {
 
