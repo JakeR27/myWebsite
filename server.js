@@ -80,7 +80,7 @@ httpsApp.use('/media', express.static(__dirname + '/media'));
 httpsApp.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
 
 //log IP of all requests
-httpsApp.use( (req, res) => {
+httpsApp.use( (req, res, next) => {
     //Log the IP of the request
     console.log(cTime() + webS + httpsS + `: served request from ${req.ip}`)
     next()
