@@ -113,9 +113,9 @@ httpsApp.get('/dev', (req, res) => {
 httpsApp.get('/gym', (req, res) => {
 
     if (req.cookies["LukeIsCool"] == true) {
-        res.render('gym', {lukeIsCool: true});
+        res.render('gym', {lukeIsCool: true, buttonText:"danger", extraText:"NOT"});
     } else {
-        res.render('gym', {lukeIsCool: false});
+        res.render('gym', {lukeIsCool: false, buttonText:"submit", extraText:""});
     }
     
 })
