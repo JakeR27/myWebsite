@@ -127,7 +127,7 @@ httpsApp.get('/gym', (req, res) => {
 })
 
 //post handler for luke being cool
-httpsApp.post('/gymToggle', (req, res) => {
+httpsApp.post('/gym', (req, res) => {
         
     if (req.cookies["LukeIsCool"] == "true") {
         res.cookie('LukeIsCool', 'false');
