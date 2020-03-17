@@ -127,8 +127,10 @@ httpsApp.post('/gymToggle', (req, res) => {
     
     if (req.cookies["LukeIsCool"] == true) {
         res.cookie('LukeIsCool', 'false');
+        console.log("set false")
     } else {
         res.cookie('LukeIsCool', 'true');
+        console.log("set true")
     }
      res.redirect('/gym');
 
