@@ -133,7 +133,6 @@ httpsApp.post('/gymToggle', (req, res) => {
         res.cookie('LukeIsCool', 'true');
         res.render('gym', {lukeIsCool: true});
     }
-     res.redirect('/gym');
 
 })
 
