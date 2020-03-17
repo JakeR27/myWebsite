@@ -114,9 +114,9 @@ httpsApp.get('/gym', (req, res) => {
 
     console.log("is luke cool:" + req.cookies["LukeIsCool"])
     if (req.cookies["LukeIsCool"] == true) {
-        res.render('gym', {lukeIsCool: true, buttonText:"danger", extraText:"NOT"});
+        res.render('gym', {lukeIsCool: true});
     } else {
-        res.render('gym', {lukeIsCool: false, buttonText:"submit", extraText:""});
+        res.render('gym', {lukeIsCool: false});
     }
     
 })
@@ -128,10 +128,10 @@ httpsApp.post('/gymToggle', (req, res) => {
     
     if (req.cookies["LukeIsCool"] == "true") {
         res.cookie('LukeIsCool', 'false');
-        console.log("set false")
+        res.render('gym', {lukeIsCool: false});
     } else {
         res.cookie('LukeIsCool', 'true');
-        console.log("set true")
+        res.render('gym', {lukeIsCool: true});
     }
      res.redirect('/gym');
 
