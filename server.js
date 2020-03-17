@@ -113,8 +113,10 @@ httpsApp.get('/dev', (req, res) => {
 httpsApp.get('/gym', (req, res) => {
 
     if (req.cookies["LukeIsCool"] == true) {
+        res.cookie('LukeIsCool', 'false');
         res.render('gym', {lukeIsCool: true});
     } else {
+        res.cookie('LukeIsCool', 'true');
         res.render('gym', {lukeIsCool: false});
     }
     
