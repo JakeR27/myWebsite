@@ -125,7 +125,7 @@ httpsApp.post('/gymToggle', (req, res) => {
     
     console.log(req.cookies["LukeIsCool"])
     
-    if (req.cookies["LukeIsCool"] == true) {
+    if (req.cookies["LukeIsCool"] == "true") {
         res.cookie('LukeIsCool', 'false');
         console.log("set false")
     } else {
