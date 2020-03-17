@@ -82,7 +82,7 @@ httpsApp.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
 //log IP of all requests
 httpsApp.use( (req, res, next) => {
     //Log the IP of the request
-    console.log(cTime() + webS + httpsS + `: served request to ${req.url} from ${req.ip}`)
+    console.log(cTime() + webS + httpsS + `: served ${req.method} request to ${req.url} from ${req.ip}`)
     next()
 })
 
