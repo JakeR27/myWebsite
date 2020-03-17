@@ -112,7 +112,6 @@ httpsApp.get('/dev', (req, res) => {
 //funny gym meme with luke
 httpsApp.get('/gym', (req, res) => {
 
-    console.log("is luke cool:" + req.cookies["LukeIsCool"])
     if (req.cookies["LukeIsCool"] == true) {
         res.render('gym', {lukeIsCool: true});
     } else {
@@ -123,15 +122,13 @@ httpsApp.get('/gym', (req, res) => {
 
 //post handler for luke being cool
 httpsApp.post('/gymToggle', (req, res) => {
-    
-    console.log(req.cookies["LukeIsCool"])
-    
+        
     if (req.cookies["LukeIsCool"] == "true") {
         res.cookie('LukeIsCool', 'false');
-        res.render('gym', {lukeIsCool: false});
+        res.render('gym', {lukeIsCool: true});
     } else {
         res.cookie('LukeIsCool', 'true');
-        res.render('gym', {lukeIsCool: true});
+        res.render('gym', {lukeIsCool: false});
     }
 
 })
