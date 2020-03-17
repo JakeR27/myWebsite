@@ -16,18 +16,14 @@
         <% } %>
     </div>
     <div class="container text-center mt-3">
-        
+        <form method="POST" action="/gymToggle">
             <% if (lukeIsCool) { %>
-                <form method="POST" action="/gymToggle"></form>
-                    <button class="btn btn-submit mx-auto" type="submit">click to make luke cool</button>
-                </form>
+                <button class="btn btn-submit mx-auto" type="submit">click to make luke cool</button>
             <% } else { %>
-                <form method="POST" action="/gymToggle"></form>
-                    <button class="btn btn-danger mx-auto" type="submit">click to make luke NOT cool</button>
-                </form>
+                <button class="btn btn-danger mx-auto" type="submit">click to make luke NOT cool</button>
             <% } %>
         
-        
+        </form>
 
     </div>
 
