@@ -112,6 +112,7 @@ httpsApp.get('/dev', (req, res) => {
 //funny gym meme with luke
 httpsApp.get('/gym', (req, res) => {
 
+    console.log("is luke cool:" + req.cookies["LukeIsCool"])
     if (req.cookies["LukeIsCool"] == true) {
         res.render('gym', {lukeIsCool: true, buttonText:"danger", extraText:"NOT"});
     } else {
@@ -134,7 +135,6 @@ httpsApp.post('/gymToggle', (req, res) => {
     }
      res.redirect('/gym');
 
-     console.log(req.cookies["LukeIsCool"])
 })
 
 // post handler for when search button is pressed
