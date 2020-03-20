@@ -113,6 +113,12 @@ httpsApp.get('/dev', (req, res) => {
     res.cookie('devMode', 'true')
 })
 
+//allow MMR tracker requests to work
+httpsApp.get('/mmr', (req, res) => {
+    res.render('mmrtracker')
+})
+
+
 //funny gym meme with luke
 httpsApp.get('/gym', (req, res) => {
 
