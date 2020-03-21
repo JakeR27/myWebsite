@@ -5,9 +5,9 @@ function toggleView(collectionName) {
     console.log(collectionName)
     console.log(collection)
 
-    for (elem in collection) {
+    for (let elem in collection) {
         console.log(elem)
-        elem.classList.toggle("state1");
-        elem.classList.toggle("state2");
+        collection[elem].classList.toggle("state1");
+        collection[elem].classList.toggle("state2");
     }
 }
