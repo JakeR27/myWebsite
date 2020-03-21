@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>MMR Tracker</title>
-
+    <script src="../client-side-js/mmrtacker.js"></script>
     <style>
     * {
         outline: 3px black solid
@@ -49,10 +49,10 @@
                 </div>
                 <div class="align-content-center" id="div-team1player1">
                     <form>
-                        <input class="state1 form-leftside" type="text" value="Platform name">
-                        <input class="state1 form-button" type="submit" value="SET">
-                        <canvas class="state2 form-leftside" id="team1player1"></canvas>
-                        <input class="state2 form-button" type="reset" value="🔁">
+                        <input class="t1p1 state1 form-leftside" type="text" value="Platform name">
+                        <input class="t1p1 state1 form-button" onclick="toggleView('t1p1')" type="submit" value="SET">
+                        <canvas class="t1p1 state2 form-leftside" id="team1player1"></canvas>
+                        <input class="t1p1 state2 form-button" onclick="toggleView('t1p1')" type="reset" value="🔁">
                     </form>
                     
                 </div>
