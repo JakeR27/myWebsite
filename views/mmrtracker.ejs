@@ -24,6 +24,12 @@
     .bg-red {
     background: rgb(196,50,53);
     }
+    .state1 {
+        display: none;
+    }
+    .state2 {
+        display: initial;
+    }
     </style>
 </head>
 <body>
@@ -35,10 +41,10 @@
                 </div>
                 <div id="div-team1player1">
                     <form>
-                        <input type="text" value="Platform name">
-                        <input type="submit" value="SET">
-                        <canvas id="team1player1"></canvas>
-                        <input type="reset" value="🔁">
+                        <input class="state1" type="text" value="Platform name">
+                        <input class="state1" type="submit" value="SET">
+                        <canvas class="state2" id="team1player1"></canvas>
+                        <input class="state2" type="reset" value="🔁">
                     </form>
                     
                 </div>
