@@ -15,7 +15,7 @@ function toggleView(collectionName) {
                 let theText = collection[elem -1].text
                 let ctx = collection[2].getContext("2d")
                 ctx.font = "48px serif"
-                ctx.fillText("Hello World", 10,10)
+                ctx.fillText("Hello World", 100,10)
             }
         }
         if (collection[elem].type == "reset") {
