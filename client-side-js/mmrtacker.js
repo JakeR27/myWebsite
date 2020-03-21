@@ -24,5 +24,7 @@ function toggleView(collectionName) {
                 ctx.clearRect(0,0,collection[elem].width, collection[elem].height)
             }
         }
+        
     }
+    return false
 }
