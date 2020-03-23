@@ -30,7 +30,7 @@
     .state2 {
         display: initial;
     }
-    .form-button {
+    .form-right {
         width: 29%;
         height: 100%
     }
@@ -57,10 +57,14 @@
                     
                 </div>
                 <div>
-                    <textarea id="team1player2_text" rows="1"></textarea>
-                    <button id="team1player2_submit"></button>
-                    <button id="team1player2_submit"></button>
-                    <canvas id="team1player2"></canvas>
+                    <canvas class="form-left" id="team1player2_canvas"></canvas>
+                    <div class="form-right">
+                        <textarea id="team1player2_text" rows="1"></textarea>
+                        <button id="team1player2_set" value="SET"></button>
+                        <button id="team1player2_reset" value="RESET"></button>
+                    </div>
+                    
+                    
                 </div>
                 <div>
                     <canvas id="team1player3"></canvas>
