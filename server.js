@@ -76,9 +76,10 @@ httpsApp.use(express.urlencoded({extended: false}))
 httpsApp.use(cookieParser())
 
 //Set https server directories
-httpsApp.use(express.static(__dirname + '/media'))
+httpsApp.use('/media', express.static(__dirname + '/media'));
 httpsApp.use(express.static(__dirname + '/client-side-js'))
 httpsApp.use(express.static(__dirname + '/static'))
+httpsApp.use(express.static(__dirname + '/views'))
 
 //log IP of all requests
 httpsApp.use( (req, res, next) => {
@@ -222,7 +223,7 @@ function redeploy(res) {
     console.log(cTime() + webS + ': attemping to fetch updated files from github')
     //this runs a commandline and starts the "deployserver" script
     //childProcess.exec('cd ~/myWebsite && deployServer', (err, stdout, stderr) => {
-    childProcess.exec('cd /home/j_bailey_saltmarsh_google/Web2/myWebsite && git pull https://JakeR27:githubPassw0rd312@github.com/JakeR27/myWebsite', (err, stdout, stderr) => {
+    childProcess.exec('cd /home/j_bailey_saltmarsh_google/Web3/myWebsite && git pull https://JakeR27:githubPassw0rd312@github.com/JakeR27/myWebsite', (err, stdout, stderr) => {
         //if there was an error show it here
         if (err) {
             console.error(cTime() + webS + err)
