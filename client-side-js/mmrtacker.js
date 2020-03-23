@@ -34,6 +34,7 @@ function setPlayer(teamNumber, playerNumber) {
     let elem = document.getElementById(textToSearch)
     let c = elem.getContext('2d')
 
+    ctx.font = "48px serif"
     c.fillText("Hello World", 100, 10)
 
 }
