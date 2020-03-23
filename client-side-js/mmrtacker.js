@@ -35,6 +35,6 @@ function setPlayer(teamNumber, playerNumber) {
     let c = elem.getContext('2d')
 
     c.font = "48px serif"
-    c.fillText("Hello World", 0, 0)
+    c.fillText("Hello World", 0, 100)
 
 }
