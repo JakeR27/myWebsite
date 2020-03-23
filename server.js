@@ -116,7 +116,11 @@ httpsApp.get('/dev', (req, res) => {
 
 //allow MMR tracker requests to work
 httpsApp.get('/mmr', (req, res) => {
-    res.render('mmrtracker')
+    res.render('mmrtracker', {borders: false})
+})
+
+httpsApp.get('/mmrDEV', (req, res) => {
+    res.render('mmrtracker', {borders: true})
 })
 
 

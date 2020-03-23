@@ -7,9 +7,11 @@
     <title>MMR Tracker</title>
     <script src="../client-side-js/mmrtacker.js"></script>
     <style>
-    * {
+    <% if (borders) { %>
+        * {
         outline: 3px black solid
-    }
+    <% } %>
+    
     html,body{height:100%;}
 
     .bg-purple {
