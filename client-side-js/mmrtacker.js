@@ -36,7 +36,7 @@ function setPlayer(teamNumber, playerNumber) {
 
     let textToSearchForTextbox = `team${teamNumber}player${playerNumber}_text`
     let textbox = document.getElementById(textToSearchForTextbox)
-    let t = texbox.text
+    let t = textbox.text
 
     c.font = "48px serif"
     c.fillText(t, 0, 100)
