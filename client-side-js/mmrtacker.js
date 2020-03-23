@@ -49,6 +49,7 @@ function setAllCanvasBgToWhite() {
             console.log(i, j)
             let textToSearchForCanvas = `team${i}player${j}_canvas`
             let canvas = document.getElementById(textToSearchForCanvas)
+            console.log(canvas)
             let c = canvas.getContext('2d')
             c.clearRect(0, 0, canvas.width, canvas.height)
         }
