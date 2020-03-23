@@ -77,7 +77,7 @@ httpsApp.use(cookieParser())
 
 //Set https server directories
 httpsApp.use('/media', express.static(__dirname + '/media'));
-httpsApp.use(express.static(__dirname + '/client-side-js'))
+httpsApp.use('/client-side-js', express.static(__dirname + '/client-side-js'))
 httpsApp.use(express.static(__dirname + '/static'))
 httpsApp.use(express.static(__dirname + '/views'))
 
