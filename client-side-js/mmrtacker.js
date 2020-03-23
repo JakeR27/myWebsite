@@ -42,3 +42,17 @@ function setPlayer(teamNumber, playerNumber) {
     c.fillText(t, 0, canvas.height / 4)
 
 }
+
+function setAllCanvasBgToWhite() {
+    for (i = 1; i < 2; i++) {
+        for (j = 1; i < 5; j++) {
+            let textToSearchForCanvas = `team${i}player${j}_canvas`
+            let canvas = document.getElementById(textToSearchForCanvas)
+            let c = canvas.getContext('2d')
+            c.clearRect(0, 0, canvas.width, canvas.height)
+        }
+    }
+    
+}
+
+setAllCanvasBgToWhite()
