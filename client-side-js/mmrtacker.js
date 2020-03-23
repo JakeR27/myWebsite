@@ -32,6 +32,7 @@
 function setPlayer(teamNumber, playerNumber) {
     let textToSearchForCanvas = `team${teamNumber}player${playerNumber}_canvas`
     let canvas = document.getElementById(textToSearchForCanvas)
+    console.log(canvas, textToSearchForCanvas)
     let c = canvas.getContext('2d')
 
     let textToSearchForTextbox = `team${teamNumber}player${playerNumber}_text`
