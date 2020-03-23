@@ -30,11 +30,15 @@
 // }
 
 function setPlayer(teamNumber, playerNumber) {
-    let textToSearch = `team${teamNumber}player${playerNumber}_canvas`
-    let elem = document.getElementById(textToSearch)
-    let c = elem.getContext('2d')
+    let textToSearchForCanvas = `team${teamNumber}player${playerNumber}_canvas`
+    let canvas = document.getElementById(textToSearchForCanvas)
+    let c = canvas.getContext('2d')
+
+    let textToSearchForTextbox = `team${teamNumber}player${playerNumber}_text`
+    let textbox = document.getElementById(textToSearchForTextbox)
+    let t = texbox.text
 
     c.font = "48px serif"
-    c.fillText("Hello World", 0, 100)
+    c.fillText(t, 0, 100)
 
 }
