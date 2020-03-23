@@ -39,6 +39,6 @@ function setPlayer(teamNumber, playerNumber) {
     let t = textbox.value
 
     c.font = "48px serif"
-    c.fillText(t, 0, 100)
+    c.fillText(t, 0, canvas.height / 8)
 
 }
