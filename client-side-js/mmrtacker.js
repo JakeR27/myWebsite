@@ -46,6 +46,7 @@ function setPlayer(teamNumber, playerNumber) {
 function setAllCanvasBgToWhite() {
     for (i = 1; i < 2; i++) {
         for (j = 1; i < 5; j++) {
+            console.log(i, j)
             let textToSearchForCanvas = `team${i}player${j}_canvas`
             let canvas = document.getElementById(textToSearchForCanvas)
             let c = canvas.getContext('2d')
