@@ -124,6 +124,10 @@ httpsApp.get('/mmrDEV', (req, res) => {
     res.render('mmrtracker', {borders: true})
 })
 
+httpsApp.get('tutor', (req, res) => {
+    res.render('tutor')
+})
+
 
 //funny gym meme with luke
 httpsApp.get('/gym', (req, res) => {
