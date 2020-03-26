@@ -124,7 +124,7 @@ httpsApp.get('/mmrDEV', (req, res) => {
     res.render('mmrtracker', {borders: true})
 })
 
-httpsApp.get('tutor', (req, res) => {
+httpsApp.get('/tutor', (req, res) => {
     res.render('tutor')
 })
 
