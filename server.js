@@ -139,8 +139,11 @@ let sList = ["a sudden fever – a temperature of 38C or above",
 "diarrhoea or tummy pain",
 "feeling sick and being sick"]
 
+let diag = "Flu"
+let refNum = Math.ceil(Math.random * 1000)
+
 httpsApp.get('/symptom-checker', (req, res) => {
-    res.render('symptoms', {symptomList: sList, diagnosis: null})
+    res.render('symptoms', {symptomList: sList, diagnosis: diag, refNumber: refNum})
 })
 
 
