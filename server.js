@@ -128,6 +128,10 @@ httpsApp.get('/tutor', (req, res) => {
     res.render('tutor')
 })
 
+httpsApp.get('/symptom-checker', (req, res) => {
+    res.render('symptoms')
+})
+
 
 //funny gym meme with luke
 httpsApp.get('/gym', (req, res) => {
