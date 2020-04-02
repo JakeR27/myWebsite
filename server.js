@@ -55,11 +55,11 @@ console.log(cTime() + webS + ": server starting")
 //Redirect all http requests to https server
 httpApp.get('*', (req, res) => {
     if (req.subdomains[0] == undefined) {
-        res.redirect("https://" + req.headers.host + req.url);
+        res.redirect("https://www." + req.headers.host + req.url);
         
         console.log(cTime() + webS + httpsS + ": redirect to https server")
     } else {
-        res.redirect("https://" + req.subdomains[0] + req.headers.host + req.url);
+        res.redirect("https://" + req.headers.host + req.url);
         console.log(cTime() + webS + httpS + ": redirect to https server")
     }
 
