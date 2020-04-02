@@ -81,7 +81,7 @@
             <p>Please select all symptoms you are currently experiencing</p>
             <form action="/symptom-checker" method="post">
                 <p>Please select which upper symptoms you are experiencing</p>
-                <% symptomHeadList.forEach(symptom => { %>
+                <% symptomUpperList.forEach(symptom => { %>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" name="<%- symptom %> " id="<%- symptom %>" value="checkedValue">
@@ -90,7 +90,7 @@
                     </div>
                 <% }) %>
                 <p>Please select which central symptoms you are experiencing</p>
-                <% symptomBodyList.forEach(symptom => { %>
+                <% symptomCentralList.forEach(symptom => { %>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" name="<%- symptom %> " id="<%- symptom %>" value="checkedValue">
@@ -99,7 +99,16 @@
                     </div>
                 <% }) %>
                 <p>Please select which lower symptoms you are experiencing</p>
-                <% symptomLegsList.forEach(symptom => { %>
+                <% symptomLowerList.forEach(symptom => { %>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="<%- symptom %> " id="<%- symptom %>" value="checkedValue">
+                        <%- symptom %>
+                      </label>
+                    </div>
+                <% }) %>
+                <p>Please select which overall symptoms you are experiencing</p>
+                <% symptomOverallList.forEach(symptom => { %>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" name="<%- symptom %> " id="<%- symptom %>" value="checkedValue">
