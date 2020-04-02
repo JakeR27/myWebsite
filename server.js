@@ -64,7 +64,7 @@ httpApp.get('*', (req, res) => {
     }
 
     console.log(req.headers.host + "  " + req.subdomains[0])
-    console.log(req)
+    // console.log(req)
     
 })
 
