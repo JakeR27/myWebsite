@@ -208,7 +208,7 @@ httpsApp.post('/webhooks/github/push', gitHandler, (req, res) => {
 })
 
 //redirect all not found pages to a 404 messagescreen 
-httpsApp.get((req, res) => {
+httpsApp.get('*', (req, res) => {
     res.status(404);
   
     // respond with html page
