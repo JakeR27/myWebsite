@@ -128,8 +128,19 @@ httpsApp.get('/tutor', (req, res) => {
     res.render('tutor')
 })
 
+let sList = ["a sudden fever – a temperature of 38C or above",
+"an aching body",
+"feeling tired or exhausted",
+"a dry cough",
+"a sore throat",
+"a headache",
+"difficulty sleeping",
+"loss of appetite",
+"diarrhoea or tummy pain",
+"feeling sick and being sick"]
+
 httpsApp.get('/symptom-checker', (req, res) => {
-    res.render('symptoms')
+    res.render('symptoms', {symptomList: sList, diagnosis: null})
 })
 
 

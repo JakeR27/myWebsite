@@ -77,8 +77,26 @@
         <div id="top" class="container">
             <h1 class="mt-5">Symptom Checker</h1>
         </div>
+        <div class="container">
+            <p>Please select all symptoms you are currently experiencing</p>
+            <form action="/symptom-checker" method="post">
+                <% symptomList.forEach(symptom => { %>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="<%- symptom %> " id="<%- symptom %>" value="checkedValue">
+                        <%- symptom %>
+                      </label>
+                    </div>
+                <% }) %>
+            
+            </form>
+            
+            <% if (diagnosis) { %>
+             
+            <% } %>
+
+        </div>
         
-        <form action="/symptom-checker" method="post"></form>
 
         
     </main>
