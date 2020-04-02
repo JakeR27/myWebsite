@@ -131,22 +131,21 @@ httpsApp.get('/tutor', (req, res) => {
     res.render('tutor')
 })
 
-let sList = ["a sudden fever – a temperature of 38C or above",
-"an aching body",
+let upperSymptoms = ["a sudden fever – a temperature of 38C or above",
 "feeling tired or exhausted",
 "a dry cough",
 "a sore throat",
 "a headache",
-"difficulty sleeping",
-"loss of appetite",
-"diarrhoea or tummy pain",
-"feeling sick and being sick"]
+"loss of appetite"]
+let centralSymptoms = ["an aching body"]
+let lowerSymptoms = ["diarrhoea or tummy pain"]
+let overallSymptoms = ["difficulty sleeping","feeling sick and being sick"]
 
 let diag = "Flu"
 let refNum = 10
 
 httpsApp.get('/symptom-checker', (req, res) => {
-    res.render('symptoms', {symptomList: sList, diagnosis: diag, refNumber: refNum})
+    res.render('symptoms', {symptomUpperList: upperSymptoms, symptomCentralList: centralSymptoms, symptomLowerList: lowerSymptoms, symptomOverallList: overallSymptoms, diagnosis: diag, refNumber: refNum})
 })
 
 
