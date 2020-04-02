@@ -88,8 +88,8 @@ httpsApp.use( (req, res, next) => {
     next()
 })
 
-//redirect all not found pages to a 404 message 
-app.use(function(req, res, next){
+//redirect all not found pages to a 404 messagescreen 
+httpsApp.use(function(req, res, next){
     res.status(404);
   
     // respond with html page
