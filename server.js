@@ -88,26 +88,6 @@ httpsApp.use( (req, res, next) => {
     next()
 })
 
-//redirect all not found pages to a 404 messagescreen 
-httpsApp.use(function(req, res, next){
-    res.status(404);
-  
-    // respond with html page
-    if (req.accepts('html')) {
-      res.render('404', { url: req.url });
-      return;
-    }
-  
-    // respond with json
-    if (req.accepts('json')) {
-      res.send({ error: 'Not found' });
-      return;
-    }
-  
-    // default to plain-text. send()
-    res.type('txt').send('Not found');
-  });
-
 //Root path displays site
 httpsApp.get('/', (req, res) => {
 
@@ -226,6 +206,27 @@ httpsApp.post('/webhooks/github/push', gitHandler, (req, res) => {
         res.status(200).end()
     }
 })
+
+//redirect all not found pages to a 404 messagescreen 
+httpsApp.get((req, res) => {
+    res.status(404);
+  
+    // respond with html page
+    if (req.accepts('html')) {
+      res.render('404', { url: req.url });
+      return;
+    }
+  
+    // respond with json
+    if (req.accepts('json')) {
+      res.send({ error: 'Not found' });
+      return;
+    }
+  
+    // default to plain-text. send()
+    res.type('txt').send('Not found');
+  });
+
 
 // starts httpS server at port 8443 by default 
 httpsServer.listen(process.env.httpsPORT || httpsPort, () => {
