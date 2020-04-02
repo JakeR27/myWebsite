@@ -58,12 +58,12 @@ httpApp.get('*', (req, res) => {
         res.redirect("https://www." + req.headers.host + req.url);
         
         console.log(cTime() + webS + httpS + ": redirect to https server")
-        console.log(cTime() + webS + httpS + "at: " + "https://www." + req.headers.host + req.url)
+        console.log(cTime() + webS + httpS + ": at " + "https://www." + req.headers.host + req.url)
     } else {
         res.redirect("https://" + req.headers.host + req.url);
 
         console.log(cTime() + webS + httpS + ": redirect to https server")
-        console.log(cTime() + webS + httpS + "at: " + "https://" + req.headers.host + req.url)
+        console.log(cTime() + webS + httpS + ": at " + "https://" + req.headers.host + req.url)
     }
 
     //console.log(req.headers.host + "  " + req.subdomains[0])
