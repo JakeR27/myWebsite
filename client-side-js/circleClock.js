@@ -1,6 +1,9 @@
 var canvas = document.getElementById("myCanvas");
 var c = canvas.getContext("2d");
 
+document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+document.body.scroll = "no"; // ie only
+
 canvas.height = innerHeight;
 canvas.width = innerWidth;
 
