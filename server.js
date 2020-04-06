@@ -166,13 +166,13 @@ httpsApp.get('/anim', (req, res) => {
     res.render('animations')
 })
 httpsApp.get('/anim1', (req, res) => {
-    res.render('circlePacking.html')
+    res.render('circlePacking')
 })
 httpsApp.get('/anim2', (req, res) => {
-    res.render('circleClock.html')
+    res.render('circleClock')
 })
 httpsApp.get('/anim3', (req, res) => {
-    res.render('gradientRain.html')
+    res.render('gradientRain')
 })
 
 //post handler for luke being cool
