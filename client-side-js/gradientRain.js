@@ -29,6 +29,9 @@ window.addEventListener('resize', function(event) {
 
 
 function Droplet(x, y,  size, dy) {
+
+    let oldDY = dy
+
     this.size = size
     this.y = y;
     this.x = x;
@@ -68,7 +71,7 @@ function Droplet(x, y,  size, dy) {
         this.colour = `rgb(${this.colourCodeR}, ${this.colourCodeG}, ${this.colourCodeB})`
         if (this.y > innerHeight) {
             this.y = 0;
-            this.dy = dy;
+            this.dy = oldDY;
             this.x = this.x + (50 - Math.floor(Math.random() * 100))
         }
         
