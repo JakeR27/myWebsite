@@ -162,6 +162,16 @@ httpsApp.get('/gym', (req, res) => {
     
 })
 
+httpsApp.get('anim1', (req, res) => {
+    res.render('circlePacking.html')
+})
+httpsApp.get('anim2', (req, res) => {
+    res.render('circleClock.html')
+})
+httpsApp.get('anim3', (req, res) => {
+    res.render('gradientRain.html')
+})
+
 //post handler for luke being cool
 httpsApp.post('/gym', (req, res) => {
         
