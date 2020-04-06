@@ -162,13 +162,16 @@ httpsApp.get('/gym', (req, res) => {
     
 })
 
-httpsApp.get('anim1', (req, res) => {
+httpsApp.get('/anim', (req, res) => {
+    res.render('animations')
+})
+httpsApp.get('/anim1', (req, res) => {
     res.render('circlePacking.html')
 })
-httpsApp.get('anim2', (req, res) => {
+httpsApp.get('/anim2', (req, res) => {
     res.render('circleClock.html')
 })
-httpsApp.get('anim3', (req, res) => {
+httpsApp.get('/anim3', (req, res) => {
     res.render('gradientRain.html')
 })
 
