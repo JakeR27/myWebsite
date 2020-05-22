@@ -7,7 +7,7 @@ let make = function(payload) {
     console.log("j.str payload: ")
     console.log(JSON.stringify(payload))
 
-    return { method: 'get',
+    return { method: 'post',
              credentials: 'include',
              headers: { 'Accept': 'application/json',
                   'Content-Type': 'application/json' },
