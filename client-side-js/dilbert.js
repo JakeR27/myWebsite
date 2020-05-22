@@ -26,7 +26,7 @@ window.onload = function() {
         console.log("here")
         console.log(data)
 
-        let imageLink = data.link
+        let imageLink = data.image
         let dilbertImg = document.createElement("img")
         dilbertImg.src = imageLink
 
