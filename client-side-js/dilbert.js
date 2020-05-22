@@ -21,7 +21,7 @@ getDilbert = async function(payload) {
 }
 
 window.onload = function() {
-    getDilbert().then( (data) => {
+    getDilbert().then(res=>res.json()).then( (data) => {
         let imageLink = data.link
         let dilbertImg = document.createElement("img")
         dilbertImg.src = imageLink
