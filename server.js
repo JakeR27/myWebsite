@@ -94,6 +94,8 @@ httpsApp.use( (req, res, next) => {
 //Root path displays site
 httpsApp.get('/', (req, res) => {
 
+    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html");
+
     //If devMode cookie present show dev render
     if (req.cookies['devMode'] == 'true') {
         res.render('index', {borderOn: 1})
@@ -189,11 +191,11 @@ httpsApp.post('/gym', (req, res) => {
 })
 
 httpsApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
-    res.render("6d01f5c3f19912e597a29fa9666ed3c7.html")
+    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html")
 })
 
 httpApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
-    res.render("6d01f5c3f19912e597a29fa9666ed3c7.html")
+    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html")
 })
 
 // post handler for when search button is pressed
