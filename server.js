@@ -188,11 +188,11 @@ httpsApp.post('/gym', (req, res) => {
 
 })
 
-httpsApp.get('6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
+httpsApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
     res.render("6d01f5c3f19912e597a29fa9666ed3c7.html")
 })
 
-httpApp.get('6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
+httpApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
     res.render("6d01f5c3f19912e597a29fa9666ed3c7.html")
 })
 
