@@ -191,11 +191,11 @@ httpsApp.post('/gym', (req, res) => {
 })
 
 httpsApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
-    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html")
+    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html", { root: __direame })
 })
 
 httpApp.get('/6d01f5c3f19912e597a29fa9666ed3c7.html', (req, res) => {
-    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html")
+    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html", { root: __direame })
 })
 
 // post handler for when search button is pressed
