@@ -94,8 +94,6 @@ httpsApp.use( (req, res, next) => {
 //Root path displays site
 httpsApp.get('/', (req, res) => {
 
-    res.sendFile("6d01f5c3f19912e597a29fa9666ed3c7.html");
-
     //If devMode cookie present show dev render
     if (req.cookies['devMode'] == 'true') {
         res.render('index', {borderOn: 1})
