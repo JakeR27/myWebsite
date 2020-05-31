@@ -176,6 +176,9 @@ httpsApp.get('/anim2', (req, res) => {
 httpsApp.get('/anim3', (req, res) => {
     res.render('gradientRain')
 })
+httpsApp.get('/games', (req, res) => {
+    res.render('games')
+})
 
 //post handler for luke being cool
 httpsApp.post('/gym', (req, res) => {
